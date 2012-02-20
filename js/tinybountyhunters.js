@@ -1,20 +1,30 @@
 (function() {
-  var myGameState;
+  var fps, menuGameState, playGameState;
 
-  myGameState = function() {
+  fps = $('#fps');
+
+  menuGameState = function() {
     return {
       setup: function() {
         return console.log('Setup!');
       },
-      update: function() {
-        return console.log('Update!');
-      },
-      draw: function() {
-        return console.log('Draw!');
-      }
+      update: function() {},
+      draw: function() {}
     };
   };
 
-  jaws.start(myGameState);
+  playGameState = function() {
+    return {
+      setup: function() {
+        return console.log('Setup!');
+      },
+      update: function() {},
+      draw: function() {}
+    };
+  };
+
+  $(function() {
+    return jaws.start(menuGameState);
+  });
 
 }).call(this);

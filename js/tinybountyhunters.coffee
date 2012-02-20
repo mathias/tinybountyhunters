@@ -1,9 +1,16 @@
-myGameState = ->
+fps = $('#fps')
+
+menuGameState = ->
   setup: ->
     console.log 'Setup!'
   update: ->
-    console.log 'Update!'
   draw: ->
-    console.log 'Draw!'
 
-jaws.start(myGameState)
+playGameState = ->
+  setup: ->
+    console.log 'Setup!'
+  update: ->
+  draw: ->
+
+$ ->
+  jaws.start(menuGameState)
