@@ -6,8 +6,12 @@
       setup: function() {
         return console.log('Setup!');
       },
-      update: function() {},
-      draw: function() {}
+      update: function() {
+        return console.log('Update!');
+      },
+      draw: function() {
+        return console.log('Draw!');
+      }
     };
   };
 
