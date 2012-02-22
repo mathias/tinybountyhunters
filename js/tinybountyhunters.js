@@ -23,21 +23,57 @@
   playGameState = function() {
     return {
       setup: function() {
-        var blocks;
-        blocks = new jaws.SpriteList();
+        var position, tile_map, _fn;
+        window.blocks = new jaws.SpriteList();
+        window.world = jaws.Rect(0, 0, 320 * 2, 300);
+        _fn = function(position) {
+          blocks.push(new jaws.Sprite({
+            image: 'img/block.png',
+            x: 0,
+            y: position * 32
+          }));
+          blocks.push(new jaws.Sprite({
+            image: 'img/block.png',
+            x: world.width - 32,
+            y: position * 32
+          }));
+          return blocks.push(new jaws.Sprite({
+            image: 'img/block.png',
+            x: position * 32,
+            y: world.height - 32
+          }));
+        };
+        for (position = 0; position <= 20; position++) {
+          _fn(position);
+        }
+        tile_map = new jaws.TileMap({
+          size: [100, 100],
+          cell_size: [32, 32]
+        });
+        tile_map.push(blocks);
+        console.log(tile_map);
+        window.viewport = new jaws.Viewport({
+          max_x: world.width,
+          max_y: world.height
+        });
+        jaws.context.mozImageSmoothingEnabled = false;
+        jaws.preventDefaultKeys(["up", "down", "left", "right", "space"]);
         return console.log('Setup!');
       },
       update: function() {
         return fps.text(jaws.game_loop.fps);
       },
       draw: function() {
-        return jaws.context.clearRect(0, 0, jaws.width, jaws.height);
+        jaws.clear();
+        return viewport.apply(function() {
+          return blocks.draw();
+        });
       }
     };
   };
 
   $(function() {
-    jaws.assets.add(['img/droid_11x15.png', 'img/block.bmp']);
+    jaws.assets.add(['img/block.png', 'img/droid_11x15.png']);
     return jaws.start(menuGameState);
   });
 
