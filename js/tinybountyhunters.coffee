@@ -3,7 +3,6 @@ fps = $('#fps')
 menuGameState = ->
   setup: ->
     jaws.on_keydown ['enter', 'space'], -> jaws.switchGameState(playGameState)
-    console.log 'Setup!'
   draw: ->
     jaws.context.clearRect 0,0, jaws.width, jaws.height
     jaws.context.font = 'bold 50pt Terminal'
@@ -13,6 +12,8 @@ menuGameState = ->
 
 playGameState = ->
   setup: ->
+    blocks = new jaws.SpriteList()
+
     console.log 'Setup!'
   update: ->
     fps.text jaws.game_loop.fps
@@ -20,4 +21,6 @@ playGameState = ->
     jaws.context.clearRect 0,0, jaws.width, jaws.height
 
 $ ->
-  jaws.start(menuGameState)
+  # jaws.assets.add ['img/droid_11x15.png', 'img/block.bmp']
+  jaws.start menuGameState
+

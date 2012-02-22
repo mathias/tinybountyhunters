@@ -6,10 +6,9 @@
   menuGameState = function() {
     return {
       setup: function() {
-        jaws.on_keydown(['enter', 'space'], function() {
+        return jaws.on_keydown(['enter', 'space'], function() {
           return jaws.switchGameState(playGameState);
         });
-        return console.log('Setup!');
       },
       draw: function() {
         jaws.context.clearRect(0, 0, jaws.width, jaws.height);
@@ -24,6 +23,8 @@
   playGameState = function() {
     return {
       setup: function() {
+        var blocks;
+        blocks = new jaws.SpriteList();
         return console.log('Setup!');
       },
       update: function() {
