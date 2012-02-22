@@ -37,6 +37,7 @@
   };
 
   $(function() {
+    jaws.assets.add(['img/droid_11x15.png', 'img/block.bmp']);
     return jaws.start(menuGameState);
   });
 

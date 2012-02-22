@@ -21,6 +21,6 @@ playGameState = ->
     jaws.context.clearRect 0,0, jaws.width, jaws.height
 
 $ ->
-  # jaws.assets.add ['img/droid_11x15.png', 'img/block.bmp']
+  jaws.assets.add ['img/droid_11x15.png', 'img/block.bmp']
   jaws.start menuGameState
 
